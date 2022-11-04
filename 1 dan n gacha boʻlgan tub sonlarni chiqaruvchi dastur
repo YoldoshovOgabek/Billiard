@@ -1,0 +1,20 @@
+#include <bits/stdc++.h> 
+using namespace std; 
+bool prime[3000001]; 
+int main() { 
+ int n;  
+cin>>n;  
+memset(prime, true, n+1);  
+prime[1] = false;  
+for (int i = 2; i*i <= n; i++) {   
+if (prime[i]) {   
+ for (int j = i*i; j <= n; j += i) {    
+ prime[j] = false;   
+  }   
+ } 
+}  
+long long ans = 0;
+  for (int i = 1; i <= n; i++) {   
+if (prime[i])  cout<<i;
+}
+}//1 dan n gacha boʻlgan tub sonlarni chiqaruvchi dastur
