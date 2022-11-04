@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool tub(int n){
+   for(int i=2; i*i<=n; i++){
+              if (n%i==0){
+                      return false;
+              }
+     }
+return true;
+}
+main(){
+     int n;
+     cin>>n;
+     cout<<tub(n);
+}// Tub sonlarni topuvchi dastur
