@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+int lcm(int a, int b){//Ekukni funksiya
+         return (a*b)/gcd(a,b);
+}
+int gcd (int a, int b) {//Ekub funksiya
+ if (b == 0)
+  return a;
+ else
+  return gcd (b, a % b);
+}
+main(){
+  int a,b;
+  cin>>a>>b;
+  cout<<gcd(a,b);//Ekubni topadi
+  cout<<lcm(a,b);//Ekukni topadi
+}
