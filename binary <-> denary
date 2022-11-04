@@ -1,0 +1,27 @@
+#include <iostream> 
+using namespace std;
+ int main() {
+  int k;  
+cin>>k;  
+if (k==10) {   
+int n;  
+ cin>>n;   
+string s = "";   
+if (n==0) 
+   s = "0";  
+ while (n > 0) {    
+s = (char)(n%2 + 48) + s;    
+n /= 2;   //10 likdan ikkilikka oʻtish
+}   
+cout<<s;  }  
+else {   
+string s;   
+cin>>s;   
+int n = 0, pow_two = 1;   
+for (int i = s.length()-1; i >= 0; i--) {   
+ n += (s[i]-48) * pow_two;    
+pow_two *= 2; //ikkilikdan 10 likka   
+}   
+cout<<n; 
+} 
+}
