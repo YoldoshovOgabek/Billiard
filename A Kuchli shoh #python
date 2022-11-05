@@ -1,0 +1,8 @@
+# kuchli shoh
+
+from math import ceil
+v1, v2 = map(str, input().split())
+v1 = int(v1[1:])
+v2 = int(v2[1:])
+r = (v2-v1)/2
+print(ceil(r))
