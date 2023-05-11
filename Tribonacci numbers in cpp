@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+const int mod = 1000000007;
+
+void multiply(long long int T[3][3], long long int M[3][3]) {
+  long long int temp[3][3] = {0};
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      for (int k = 0; k < 3; k++) {
+        temp[i][j] = (temp[i][j] + T[i][k] * M[k][j]) % mod;
+      }
+    }
+  }
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      T[i][j] = temp[i][j];
+    }
+  }
+}
+
+long long int tribonacci(long long int n) {
+  if (n <= 0) {
+    return 0;
+  }
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+
+  long long int T[3][3] = {{1, 1, 1}, {1, 0, 0}, {0, 1, 0}};
+  long long int M[3][3] = {{1, 1, 1}, {1, 0, 0}, {0, 1, 0}};
+
+  n -= 2;
+  while (n > 0) {
+    if (n % 2 == 1) {
+      multiply(T, M);
+    }
+    multiply(M, M);
+    n /= 2;
+  }
+
+  return T[0][0];
+}
+
+int main() {
+  long long int n;
+  cout << "Enter the value of n: ";
+  cin >> n;
+
+  long long int result = tribonacci(n);
+  cout << "The " << n << "th term of the Tribonacci sequence is: " << result << endl;
+
+  return 0;
+}
