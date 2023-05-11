@@ -1,0 +1,33 @@
+mod = 10**9 + 7
+
+def multiply(T, M):
+    temp = [[0 for _ in range(3)] for _ in range(3)]
+    for i in range(3):
+        for j in range(3):
+            for k in range(3):
+                temp[i][j] = (temp[i][j] + T[i][k] * M[k][j]) % mod
+    for i in range(3):
+        for j in range(3):
+            T[i][j] = temp[i][j]
+
+def tribonacci(n):
+    if n <= 0:
+        return 0
+    if n == 1 or n == 2:
+        return 1
+
+    T = [[1, 1, 1], [1, 0, 0], [0, 1, 0]]
+    M = [[1, 1, 1], [1, 0, 0], [0, 1, 0]]
+
+    n -= 2
+    while n > 0:
+        if n % 2 == 1:
+            multiply(T, M)
+        multiply(M, M)
+        n //= 2
+
+    return T[0][0]
+
+n = int(input("Enter the value of n: "))
+result = tribonacci(n)
+print("The", n, "th term of the Tribonacci sequence is:", result)
