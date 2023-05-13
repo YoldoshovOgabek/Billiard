@@ -1,0 +1,33 @@
+def merge_sort(a,n):
+    if(n == 1):
+        return a
+    arrayOne = a[0:n//2]
+    arrayTwo = a[n//2:n]
+
+    arrayOne = merge_sort(arrayOne,len(arrayOne))
+    arrayTwo = merge_sort(arrayTwo,len(arrayTwo))
+
+    return merge(arrayOne,arrayTwo)
+def merge(a,b):
+    c=[]
+
+    while(len(a) and len(b)):
+        if(a[0] > b[0]):
+            c.append(b[0])
+            b.pop(0)
+        else:
+            c.append(a[0])
+            a.pop(0)
+
+    while(len(a)):
+        c.append(a[0])
+        a.pop(0)
+    while(len(b)):
+        c.append(b[0])
+        b.pop(0)
+
+    return c
+
+n=int(input())
+*a,=map(int,input().split())
+print(merge_sort(a,n))
